@@ -1,12 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
 import LoginLayout from "./layout/Login";
 import Home from "./views/Home";
 import Login from "./views/Login";
 import About from "./views/About";
 
-import "./App.css";
+import "./assets/style.css";
 
 function App() {
   return (

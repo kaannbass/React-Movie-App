@@ -1,12 +1,11 @@
-// MainLayout.jsx
 import React from 'react';
 import Navbar from '../components/Navbar';
 
 function MainLayout({ children }) {
   return (
-    <div className="">
-      <Navbar></Navbar>
-      <div className="main-layout">
+    <div className="main-layout">
+      <Navbar />
+      <div className="content">
         {children}
       </div>
     </div>

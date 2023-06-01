@@ -1,11 +1,18 @@
+import React from 'react';
+import MainLayout from '../layout/MainLayout';
+import MyTabs from '../components/Tab';
+
 const Home = () => {
     return (
-        <div className="">
-            <h1>HOME</h1>
-            <h1>HOME</h1>
-            <h1>HOME</h1>
-            <h1>HOME</h1>
-        </div>
+        <MainLayout>
+            <div className="text-3xl font-bold underline">
+                <h1>HOME</h1>
+                <h1>HOME</h1>
+                <h1>HOME</h1>
+                <h1>HOME</h1>
+            </div>
+            <MyTabs></MyTabs>
+        </MainLayout>
     );
 }
 

@@ -1,7 +1,11 @@
+import MainLayout from "../layout/MainLayout";
+
 const About = () => {
-    return ( 
-        <h1>About</h1>
-     );
+    return (
+        <MainLayout>
+            <h1>About</h1>
+        </MainLayout>
+    );
 }
- 
+
 export default About;

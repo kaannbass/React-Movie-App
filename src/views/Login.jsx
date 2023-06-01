@@ -1,7 +1,11 @@
+import LoginLayout from "../layout/Login";
+
 const Login = () => {
-    return ( 
-        <h1>Login</h1>
-     );
+    return (
+        <LoginLayout>
+            <h1>Login</h1>
+        </LoginLayout>
+    );
 }
- 
+
 export default Login;
