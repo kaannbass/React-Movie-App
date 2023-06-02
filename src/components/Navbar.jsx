@@ -16,7 +16,7 @@ const Navbar = () => {
         <header>
             <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
                 <div className="flex lg:flex-1">
-                    <Link href="#" className="-m-1.5 p-1.5">
+                    <Link to='/' className="-m-1.5 p-1.5">
                         <span className="sr-only">Your Company</span>
                         <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
                     </Link>
@@ -44,22 +44,17 @@ const Navbar = () => {
 
                 </Popover.Group>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <Link className="text-sm font-semibold leading-6 text-gray-900">
-                        {Links.filter((list) => list.id === 3).map(filterList => {
-                            return (
-                                <Link to={filterList.to} key={filterList.id} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
-                                    {filterList.name} <span className=''>&rarr;</span>
-                                </Link>
-                            )
-                        })}
+                    <Link to={Links.find((list) => list.id === 3).to} className="text-sm leading-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        {Links.find((list) => list.id === 3).name} <span className="">&rarr;</span>
                     </Link>
+
                 </div>
             </nav>
             <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
                 <div className="fixed inset-0 z-10" />
                 <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                     <div className="flex items-center justify-between">
-                        <Link href="#" className="-m-1.5 p-1.5">
+                        <Link to='/' className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>
                             <img
                                 className="h-8 w-auto"
@@ -89,13 +84,9 @@ const Navbar = () => {
 
                             </div>
                             <div className="py-6">
-                                {Links.filter((list) => list.id === 3).map(filterList => {
-                                    return (
-                                        <Link to={filterList.to} key={filterList.id} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" >
-                                            {filterList.name}
-                                        </Link>
-                                    )
-                                })}
+                                <Link to={Links.find((list) => list.id === 3).to} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                    {Links.find((list) => list.id === 3).name}
+                                </Link>
                             </div>
                         </div>
                     </div>

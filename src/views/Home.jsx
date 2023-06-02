@@ -1,18 +1,15 @@
 import React from 'react';
-import MainLayout from '../layout/MainLayout';
-import MyTabs from '../components/Tab';
+import { Outlet } from 'react-router';
 
 const Home = () => {
     return (
-        <MainLayout>
+        <div className="">
             <div className="text-3xl font-bold underline">
                 <h1>HOME</h1>
-                <h1>HOME</h1>
-                <h1>HOME</h1>
-                <h1>HOME</h1>
             </div>
-            <MyTabs></MyTabs>
-        </MainLayout>
+           
+            <Outlet></Outlet>
+        </div>
     );
 }
 
