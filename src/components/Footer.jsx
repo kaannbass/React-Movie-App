@@ -7,13 +7,13 @@ const Footer = () => {
     ]
     return (
 
-        <div className="bg-white dark:bg-gray-900 m-4">
+        <div className="bg-white dark:bg-gray-900">
             <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <Link to="/" className="flex items-center">
                         <img src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" className="h-8 ml-4 mr-3" alt="Flowbite Logo" />
                     </Link>
-                    <ul class="flex flex-wrap gap-3 items-center mb-6 text-sm font-medium">
+                    <ul className="flex flex-wrap gap-3 items-center mb-6 text-sm font-medium">
                         {Links.map(filterList => {
                             return (
                                 <li key={filterList.id}>
@@ -28,7 +28,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-                <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <Link to="/" class="hover:underline">Kaan™</Link>. All Rights Reserved.</span>
+                <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <Link to="/" className="hover:underline">Kaan™</Link>. All Rights Reserved.</span>
             </div>
         </div>
 

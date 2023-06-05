@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 
 function MainLayout({children}) {
   return (
@@ -9,7 +9,7 @@ function MainLayout({children}) {
       <div className="content p-3">
         {children}
       </div>
-      <Footer/>
+     
     </div>
   );
 }

@@ -1,12 +1,16 @@
 import MainLayout from '../layout/MainLayout';
 import MovieCard from '../components/MovieCard';
 import { useState, useEffect } from 'react';
+import Loading from '../components/MyLoading';
 import axios from 'axios';
 
 const Home = () => {
     const key = "c46fe44e506fa85f374fae117ed26e81";
     const URL = `https://api.themoviedb.org/3/movie/popular/`;
-    const moviePost = 'https://www.themoviedb.org/t/p/w440_and_h660_face'
+    const moviePost = 'https://www.themoviedb.org/t/p/w440_and_h660_face';
+
+    //Movie Detail 
+    const DetailURL = `https://api.themoviedb.org/3/movie/`;
 
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
@@ -15,10 +19,24 @@ const Home = () => {
         const fetchData = async () => {
             setLoading(true);
             try {
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
                 const response = await axios.get(URL, {
-                    api_key: key
+                    params: {
+                        api_key: key
+                    }
                 });
                 setData(response.data.results);
+                const movieDetailsPromises = response.data.results.map(movie => {
+                    return axios.get(`${DetailURL}${movie.id}`, {
+                        params: {
+                            api_key: key
+                        }
+                    });
+                });
+
+                const movieDetailsResponses = await Promise.all(movieDetailsPromises);
+                console.log('Movie details:', movieDetailsResponses);
             } catch (error) {
                 console.error(error.message);
             }
@@ -28,14 +46,17 @@ const Home = () => {
         fetchData();
     }, []);
 
+
+
     return (
         <div className="">
             <MainLayout>
                 <div className="">
                     <div className="mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  p-2">
-                        {data.map(item => (
-                            <div className="w-full grid-cols-1 md:grid-cols-4" key={item.id}>
-                                
+                        {loading ? <Loading /> :
+                            data.map(item => (
+                                <div className="w-full grid-cols-1 md:grid-cols-4" key={item.id}>
+
                                     <MovieCard
                                         key={item.id}
                                         backdrop_path={moviePost + item.poster_path}
@@ -44,12 +65,13 @@ const Home = () => {
                                         date={item.release_date}
                                         body={item.overview}
                                         to={item.id}
-                                        popularity={item.popularity}
-                                        
+                                        vote_average={item.vote_average}
+                                        genres={item.original_language}
+                                        genress={item.genres?.map(genre => genre.name)}
                                     />
-                               
-                            </div>
-                        ))}
+
+                                </div>
+                            ))}
                     </div>
                 </div>
             </MainLayout>
