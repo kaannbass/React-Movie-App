@@ -9,7 +9,7 @@ const Navbar = () => {
 
     const Links = [
         { id: 1, name: 'Home', to: '/' },
-        { id: 2, name: 'About', to: '/about' },
+        { id: 2, name: 'Movie Favorite', to: '/moviefavorite' },
         { id: 3, name: 'Log In', to: '/login' },
     ]
     return (
@@ -36,7 +36,7 @@ const Navbar = () => {
 
                     {Links.filter((list) => list.id < 3).map(filterList => {
                         return (
-                            <Link to={filterList.to} key={filterList.id} className="text-sm font-semibold leading-6 text-gray-900" >
+                            <Link to={filterList.to} key={filterList.id} className="text-lg font-semibold leading-6 text-gray-900 hover:text-blue-500" >
                                 {filterList.name}
                             </Link>
                         )
@@ -44,7 +44,7 @@ const Navbar = () => {
 
                 </Popover.Group>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <Link to={Links.find((list) => list.id === 3).to} className="text-sm leading-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <Link to={Links.find((list) => list.id === 3).to} className="text-md leading-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         {Links.find((list) => list.id === 3).name} <span className="">&rarr;</span>
                     </Link>
 
