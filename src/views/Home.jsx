@@ -9,11 +9,12 @@ const Home = () => {
     const URL = `https://api.themoviedb.org/3/movie/popular/`;
     const moviePost = 'https://www.themoviedb.org/t/p/w440_and_h660_face';
 
-    //Movie Detail 
+    // Movie Detail 
     const DetailURL = `https://api.themoviedb.org/3/movie/`;
 
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
+    const [likedMovies, setLikedMovies] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -42,11 +43,30 @@ const Home = () => {
             }
             setLoading(false);
         };
-
         fetchData();
+
+    }, [DetailURL, URL]);
+
+    useEffect(() => {
+        const storedItems = localStorage.getItem('likedMovies');
+        if (storedItems) {
+            setLikedMovies(JSON.parse(storedItems));
+        }
     }, []);
 
+    const handleLike = (id) => {
+        const isLiked = likedMovies.includes(id);
+        let updatedLikedMovies = [];
 
+        if (isLiked) {
+            updatedLikedMovies = likedMovies.filter(movieId => movieId !== id);
+        } else {
+            updatedLikedMovies = [...likedMovies, id];
+        }
+
+        setLikedMovies(updatedLikedMovies);
+        localStorage.setItem('likedMovies', JSON.stringify(updatedLikedMovies));
+    };
 
     return (
         <div className="">
@@ -56,7 +76,6 @@ const Home = () => {
                         {loading ? <Loading /> :
                             data.map(item => (
                                 <div className="w-full grid-cols-1 md:grid-cols-4" key={item.id}>
-
                                     <MovieCard
                                         key={item.id}
                                         backdrop_path={moviePost + item.poster_path}
@@ -66,9 +85,10 @@ const Home = () => {
                                         body={item.overview}
                                         to={item.id}
                                         vote_average={item.vote_average}
-                                        genres={item.original_language}
-                                        genress={item.genres?.map(genre => genre.name)}
+                                        handleLike={handleLike}
+                                        isLiked={likedMovies.includes(item.id)}
                                     />
+
 
                                 </div>
                             ))}

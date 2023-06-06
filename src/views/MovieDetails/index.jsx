@@ -38,7 +38,7 @@ const MovieDetail = () => {
     };
 
     fetchData();
-  }, [URL, movieId]);
+  }, [URL,movieId]);
 
   return (
     <MainLayout>
@@ -47,9 +47,9 @@ const MovieDetail = () => {
           <div>Loading...</div>
         ) : data ? (
           <div className="w-full grid-cols-1 md:grid-cols-4" key={data.id}>
-            <MovieDetailImg 
-            poster_path={moviePost + data.poster_path}
-            original_title={data.original_title}
+            <MovieDetailImg
+              poster_path={moviePost + data.poster_path}
+              original_title={data.original_title}
             ></MovieDetailImg>
           </div>
         ) : (
