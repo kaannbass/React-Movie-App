@@ -1,17 +1,17 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Dialog, Popover } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon, } from '@heroicons/react/24/outline'
-import { Link } from "react-router-dom";
+import { Link, } from "react-router-dom";
 
 const Navbar = () => {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-    const Links = [
-        { id: 1, name: 'Home', to: '/' },
-        { id: 2, name: 'Movie Favorite', to: '/moviefavorite' },
-        { id: 3, name: 'Log In', to: '/login' },
-    ]
+    const Links = {
+        regURL: [{ id: 4, name: 'Log In', to: '/login' }, { id: 5, name: 'Register', to: '/register' }],
+        basURL: [
+            { id: 1, name: 'Home', to: '/' }, { id: 2, name: 'Support', to: '/support' }, { id: 3, name: 'Movie Favorite', to: '/moviefavorite' }
+        ]
+    }
     return (
         <header>
             <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
@@ -32,9 +32,7 @@ const Navbar = () => {
                     </button>
                 </div>
                 <Popover.Group className="hidden lg:flex lg:gap-x-12">
-
-
-                    {Links.filter((list) => list.id < 3).map(filterList => {
+                    {Links.basURL.map(filterList => {
                         return (
                             <Link to={filterList.to} key={filterList.id} className="text-lg font-semibold leading-6 text-gray-900 hover:text-blue-500" >
                                 {filterList.name}
@@ -44,10 +42,12 @@ const Navbar = () => {
 
                 </Popover.Group>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <Link to={Links.find((list) => list.id === 3).to} className="text-md leading-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        {Links.find((list) => list.id === 3).name} <span className="">&rarr;</span>
-                    </Link>
-
+                    {Links.regURL.map((list) => {
+                        return (
+                            <Link to={list.to} key={list.id} className='text-md leading-6 block text-center m-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+                                {list.name} <span className="">&rarr;</span>
+                            </Link>)
+                    })}
                 </div>
             </nav>
             <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -74,19 +74,25 @@ const Navbar = () => {
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-2 py-6">
-                                {Links.filter((list) => list.id < 3).map(filterList => {
+
+                                {Links.basURL.map((list) => {
                                     return (
-                                        <Link to={filterList.to} key={filterList.id} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" >
-                                            {filterList.name}
-                                        </Link>
-                                    )
+
+                                        <Link to={list.to} key={list.id} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                            {list.name}
+                                        </Link>)
                                 })}
+
+
 
                             </div>
                             <div className="py-6">
-                                <Link to={Links.find((list) => list.id === 3).to} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                    {Links.find((list) => list.id === 3).name}
-                                </Link>
+                                {Links.regURL.map((list) => {
+                                    return (
+                                        <Link to={list.to} key={list.id} className="text-md leading-6 block text-center m-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                            {list.name} <span className="">&rarr;</span>
+                                        </Link>)
+                                })}
                             </div>
                         </div>
                     </div>
