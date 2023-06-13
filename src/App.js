@@ -9,6 +9,7 @@ import MovieDetail from "./views/MovieDetails";
 import Support from "./views/support";
 
 import "./assets/style.css";
+import Post from "./views/Post";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/support" element={<Support />}></Route>
+          <Route path="/post" element={<Post />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
         </Routes>
       </Router>

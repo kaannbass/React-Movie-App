@@ -3,8 +3,13 @@ import { Link } from "react-router-dom";
 const Footer = () => {
     const Links = [
         { id: 1, name: 'Home', to: '/' },
-        { id: 2, name: 'Movie Favorite', to: '/moviefavorite' }
+        { id: 2, name: 'Support', to: '/support' },
+        { id: 3, name: 'Movie Favorite', to: '/moviefavorite' }
     ]
+
+    function OpenNewWindow(url){
+        window.open(url)
+    }
     return (
 
         <div className="bg-white dark:bg-gray-900">
@@ -28,7 +33,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-                <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <Link to="/" className="hover:underline">Kaan™</Link>. All Rights Reserved.</span>
+                <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <Link onClick={()=>OpenNewWindow('https://github.com/kaannbass')} className="hover:underline">Kaan™</Link>. All Rights Reserved.</span>
             </div>
         </div>
 
