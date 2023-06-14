@@ -1,11 +1,11 @@
-// import MainLayout from '../layout/MainLayout';
+import MainLayout from '../layout/MainLayout';
 import MovieCard from '../components/MovieCard';
-import { useState, useEffect, lazy } from 'react';
+import { useState, useEffect } from 'react';
 import Loading from '../components/MyLoading';
 import { Toaster, toast } from 'react-hot-toast';
 import useMovie from '../Hooks/useMovie';
 
-const MainLayout = lazy(() => import('../layout/MainLayout'))
+// const MainLayout = lazy(() => import('../layout/MainLayout'))
 
 const Home = () => {
     const key = "c46fe44e506fa85f374fae117ed26e81";
@@ -15,8 +15,8 @@ const Home = () => {
     const DetailURL = `https://api.themoviedb.org/3/movie/`;
     const [likedMovies, setLikedMovies] = useState([]);
 
-    const {data,loading} = useMovie(key,URL,DetailURL)
-  
+    const { data, loading } = useMovie(key, URL, DetailURL)
+
     useEffect(() => {
         const storedItems = localStorage.getItem('likedMovies');
         if (storedItems) {
@@ -59,8 +59,10 @@ const Home = () => {
                 <div className="">
                     <Toaster position="top-right" />
                     <div className="mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  p-2">
-                        {loading ? data.map(item => (<Loading key={item.id} />)) :
-                            data.map(item => (
+                      
+                        {loading && <Loading></Loading>}
+                        {
+                            !loading && data?.map(item => (
                                 <div className="w-full grid-cols-1 md:grid-cols-4" key={item.id}>
                                     <MovieCard
                                         key={item.id}

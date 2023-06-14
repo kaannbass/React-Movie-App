@@ -3,6 +3,7 @@ import React from "react";
 import { useParams } from 'react-router-dom';
 import MainLayout from "../../layout/MainLayout";
 import { useState, useEffect } from 'react';
+import Loading from "../../components/MyLoading";
 import axios from "axios";
 
 
@@ -48,7 +49,7 @@ const MovieDetail = () => {
     <MainLayout>
       <div className="">
         {loading ? (
-          <div>Loading...</div>
+          <Loading></Loading>
         ) : data ? (
           <div className="" key={data.id}>
             <MovieDetailImg
