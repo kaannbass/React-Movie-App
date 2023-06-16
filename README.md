@@ -1,5 +1,3 @@
-# Getting Started with Create React App
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -69,7 +67,25 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-### Project
-![image](https://github.com/kaannbass/React-Movie-App/assets/73648199/fd172757-e016-4dbc-9fac-4b4542e7fe79)
+## Project
+
+### Not Log In
+![image](https://github.com/kaannbass/React-Movie-App/assets/73648199/80b25d74-94e9-4c83-aeb2-805d5e4d1c33)
+
+### Log In
+![image](https://github.com/kaannbass/React-Movie-App/assets/73648199/8d279383-c55e-460f-b65b-7dd002c4789b)
+
+### Movie Favorite
+![image](https://github.com/kaannbass/React-Movie-App/assets/73648199/9bf07927-d89a-4081-9d38-c4aa12494c6f)
+
+### Log In Page
+![image](https://github.com/kaannbass/React-Movie-App/assets/73648199/955f8d77-2d81-41bd-aed7-21d7a5e96a59)
+
+### Register Page
+![image](https://github.com/kaannbass/React-Movie-App/assets/73648199/c9404ed4-d20b-4ab5-8546-c4931f5ba683)
+
+
+
+
 
 
