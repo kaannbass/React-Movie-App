@@ -1,9 +1,35 @@
 import React, { useState } from 'react'
 import { Dialog, Popover } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon, } from '@heroicons/react/24/outline'
-import { Link, } from "react-router-dom";
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Link } from "react-router-dom";
+import { logout } from '../db/firebase';
 
 const Navbar = () => {
+    const [user, setUser] = useState(localStorage.getItem('user'))
+
+    const userAuth = (e) => {
+        const myJson = JSON.parse(e)
+        const userMail = myJson.email
+        return userMail;
+    }
+
+    const dateFormat = () => {
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        let dateFormat = day + "/" + month + "/" + year;
+        return dateFormat
+    }
+
+
+
+    const handleLogout = async () => {
+        await logout();
+        localStorage.removeItem("user");
+        setUser(null);
+    };
+
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const Links = {
@@ -32,22 +58,40 @@ const Navbar = () => {
                     </button>
                 </div>
                 <Popover.Group className="hidden lg:flex lg:gap-x-12">
-                    {Links.basURL.map(filterList => {
-                        return (
-                            <Link to={filterList.to} key={filterList.id} className="text-lg font-semibold leading-6 text-gray-900 hover:text-blue-500" >
-                                {filterList.name}
-                            </Link>
-                        )
-                    })}
-
+                    {
+                        user ? (Links.basURL.map(filterList => {
+                            return (
+                                <Link to={filterList.to} key={filterList.id} className="text-lg font-semibold leading-6 text-gray-900 hover:text-blue-500" >
+                                    {filterList.name}
+                                </Link>
+                            )
+                        })) : " "
+                    }
                 </Popover.Group>
+
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    {Links.regURL.map((list) => {
-                        return (
-                            <Link to={list.to} key={list.id} className='text-md leading-6 block text-center m-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
-                                {list.name} <span className="">&rarr;</span>
-                            </Link>)
-                    })}
+                    {user ? (
+                        <div className="flex items-center space-x-4">
+                            <button onClick={handleLogout} className="">
+                                {/* <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt=""> */}
+                                <div className="font-medium dark:text-white">
+                                    <div>{userAuth(user)}</div>
+                                    <div className="text-sm text-gray-500 dark:text-gray-400">{dateFormat()}</div>
+                                </div>
+                            </button>
+                        </div>
+
+
+                    ) : (
+                        <>
+                            {Links.regURL.map((list) => {
+                                return (
+                                    <Link to={list.to} key={list.id} className='text-md leading-6 block text-center m-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+                                        {list.name} <span className="">&rarr;</span>
+                                    </Link>)
+                            })}
+                        </>
+                    )}
                 </div>
             </nav>
             <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>

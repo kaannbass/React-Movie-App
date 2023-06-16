@@ -19,7 +19,7 @@ const useMovie = (key, URL, DetailURL) => {
         });
         setData(response.data.results);
       } catch (error) {
-        console.error(error.message);
+        
       }
       setLoading(false);
     };

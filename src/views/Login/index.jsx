@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import Auth from "../../layout/AuthLayout";
+import AuthLayout from "../../layout/AuthLayout";
 import { useState } from "react";
 import { login } from "../../db/firebase";
 import { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -29,7 +30,8 @@ const Login = () => {
 
     return (
         <div className="">
-            <Auth>
+
+            <AuthLayout>
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
                     <Toaster position="top-right" />
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -97,7 +99,7 @@ const Login = () => {
                                     Log in
                                 </button>
                             </div>
-                            <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+                            <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                                 Not registered?
                                 <Link
                                     to='/register'
@@ -118,30 +120,25 @@ const Login = () => {
                                     <Link
                                         className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
                                     >
-                                        <img src="../../../src/assets/Icons/google.svg" alt="google" />
+                                        <i className="fa-brands fa-google"></i>
                                     </Link>
                                     <Link
                                         className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
                                     >
-                                        <img src="../../facebook.svg" alt="facebook" />
+                                        <i className="fa-brands fa-facebook"></i>
                                     </Link>
                                     <Link
                                         className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
                                     >
-                                        <img src="../../Icons/github.svg" alt="Github" />
+                                        <i className="fa-brands fa-github"></i>
                                     </Link>
                                 </div>
                             </div>
                         </form>
-                        {/* <p className="mt-10 text-center text-sm text-gray-500">
-                            Not a member?{' '}
-                            <Link className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                                Start a 14 day free trial
-                            </Link>
-                        </p> */}
                     </div>
                 </div>
-            </Auth >
+
+            </AuthLayout >
 
         </div >
     );

@@ -1,9 +1,9 @@
 import React from 'react';
-function Auth({ children }) {
+function AuthLayout({ children }) {
   return (
     <div className="login-layout">
       {children}
     </div>
   );
 }
-export default Auth;
+export default AuthLayout;

@@ -1,8 +1,9 @@
-import Auth from "../../layout/AuthLayout";
+import AuthLayout from "../../layout/AuthLayout";
 import { useState } from "react";
 import { register } from "../../db/firebase";
 import { Toaster } from 'react-hot-toast'
 import { useNavigate } from "react-router-dom";
+
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -24,7 +25,7 @@ const Register = () => {
 
     return (
         <div className="">
-            <Auth>
+            <AuthLayout>
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                     <Toaster position="top-right" />
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -91,7 +92,7 @@ const Register = () => {
                         </form>
                     </div>
                 </div>
-            </Auth>
+            </AuthLayout>
 
         </div>
     );
