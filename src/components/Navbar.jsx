@@ -22,8 +22,6 @@ const Navbar = () => {
         return dateFormat
     }
 
-
-
     const handleLogout = async () => {
         await logout();
         localStorage.removeItem("user");
@@ -118,20 +116,24 @@ const Navbar = () => {
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-2 py-6">
+                                {
+                                    user ? Links.basURL.map((list) => {
+                                        return (
 
-                                {Links.basURL.map((list) => {
-                                    return (
-
-                                        <Link to={list.to} key={list.id} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                            {list.name}
-                                        </Link>)
-                                })}
-
-
-
+                                            <Link to={list.to} key={list.id} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                                {list.name}
+                                            </Link>)
+                                    })
+                                        : " "
+                                }
                             </div>
                             <div className="py-6">
-                                {Links.regURL.map((list) => {
+                                {user ? <button onClick={handleLogout} className="">
+                                    <div className=" text-center m-2 bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                                        <div>{userAuth(user)}</div>
+                                        <div className="text-sm text-white">{dateFormat()}</div>
+                                    </div>
+                                </button> : Links.regURL.map((list) => {
                                     return (
                                         <Link to={list.to} key={list.id} className="text-md leading-6 block text-center m-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                             {list.name} <span className="">&rarr;</span>

@@ -2,7 +2,7 @@ import AuthLayout from "../../layout/AuthLayout";
 import { useState } from "react";
 import { register } from "../../db/firebase";
 import { Toaster } from 'react-hot-toast'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Register = () => {
@@ -52,7 +52,7 @@ const Register = () => {
                                         type="email"
                                         autoComplete="email"
                                         required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-400 sm:text-sm sm:leading-6"
+                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 p-2.5 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         value={email}
                                         onChange={e => setEmail(e.target.value)}
                                     />
@@ -73,7 +73,7 @@ const Register = () => {
                                         type="password"
                                         autoComplete="current-password"
                                         required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 p-2.5 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         value={password}
                                         onChange={e => setPassword(e.target.value)}
                                     />
@@ -89,6 +89,16 @@ const Register = () => {
                                     Sign in
                                 </button>
                             </div>
+                            <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
+                                Already have a an account?
+                                <Link
+                                    to='/login'
+                                    className="text-blue-700 hover:underline dark:text-blue-500 ml-1"
+                                >
+                                    Login
+                                </Link>
+                            </div>
+                           
                         </form>
                     </div>
                 </div>

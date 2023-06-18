@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const MovieCard = (props) => {
     const popularityStyle = props.vote_average > 7 ? 'inline-block bg-green-200 rounded-full w-15 h-15 px-3 py-2 text-sm font-semibold text-green-700 mr-2 mb-2' : 'inline-block bg-yellow-200 rounded-full px-3 py-1 text-sm font-semibold text-yellow-700 mr-2 mb-2';
     const isLiked = props.isLiked ? 'h-10 w-10 fill-red-500 text-red-500' : 'h-10 w-10 text-black';
-    const [user, setUser] = useState(localStorage.getItem('user'))
+    const [user] = useState(localStorage.getItem('user'))
 
     const handleLike = () => {
         props.handleLike(props.to);

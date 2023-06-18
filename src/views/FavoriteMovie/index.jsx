@@ -17,6 +17,15 @@ const FavoriteMovie = () => {
 
         getStoredItems();
     }, []);
+
+
+    const handleRemove = (id) => {
+        const removeLike = localStorage.getItem("likedMovies", id)
+        const parse = JSON.parse(removeLike)
+        console.log(parse)
+    }
+
+
     return (
         <MainLayout>
             <div className="mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  p-2">
@@ -32,6 +41,7 @@ const FavoriteMovie = () => {
                                 body={item.overview}
                                 to={item.id}
                                 vote_average={item.vote_average}
+                                handleLike={handleRemove}
                             />
                         </div>
                     ))}
