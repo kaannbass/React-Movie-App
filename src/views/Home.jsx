@@ -7,12 +7,13 @@ import useMovie from '../Hooks/useMovie';
 
 // const MainLayout = lazy(() => import('../layout/MainLayout'))
 
-const Home = () => {
-    const key = "c46fe44e506fa85f374fae117ed26e81";
-    const URL = `https://api.themoviedb.org/3/movie/popular/`;
+const Home = () => { 
+    // PERSONAL KEy = https://developer.themoviedb.org/reference/movie-popular-list
+    const key = personal KEY
+    const URL = 'https://api.themoviedb.org/3/movie/popular/';
     const moviePost = 'https://www.themoviedb.org/t/p/w440_and_h660_face';
-    // Movie Detail 
-    const DetailURL = `https://api.themoviedb.org/3/movie/`;
+    const DetailURL = 'https://api.themoviedb.org/3/movie/';
+
     const [likedMovies, setLikedMovies] = useState([]);
 
     const { data, loading } = useMovie(key, URL, DetailURL)
@@ -59,7 +60,7 @@ const Home = () => {
                 <div className="">
                     <Toaster position="top-right" />
                     <div className="mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  p-2">
-                      
+
                         {loading && <Loading></Loading>}
                         {
                             !loading && data?.map(item => (
